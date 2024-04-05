@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel # Импортируем класс BaseModel из модуля pydantic для моделирования данных
+from pydantic import BaseModel, ConfigDict  # Импортируем класс BaseModel из модуля pydantic для моделирования данных
 
 
 
@@ -15,6 +15,8 @@ class STaskAdd(BaseModel): # Создаем класс STaskAdd, который 
 # Создаем класс Task, который наследуется от класса STaskAdd
 class STask(STaskAdd):
     id: int
+
+    model_config = ConfigDict(from_attributes=True) # Создаем конфигурацию модели
 
 
 class STaskId(BaseModel):
